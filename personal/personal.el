@@ -183,7 +183,7 @@
 (add-to-list 'load-path (personal-dir-path "modules"))
 (require 'rw-ediff)
 (require 'rw-vc)
-(require 'rw-key-chord)
+(require 'jj-key-chord)
 (require 'rw-smartparens)
 (require 'rw-projectile)
 (require 'rw-web-mode)

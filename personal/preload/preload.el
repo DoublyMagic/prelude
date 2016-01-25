@@ -7,14 +7,6 @@
 (defvar is-osx-p (eq system-type 'darwin))
 (defvar is-linux-p (eq system-type 'gnu/linux))
 
-;; Set default font per platform
-(defvar default-font-name
-  (cond (is-windows-p "PragmataPro-8")
-        (is-osx-p "PragmataPro-12")
-        (is-linux-p "PragmataPro-9")
-        (t "PragmataPro-10")))
-(add-to-list 'default-frame-alist `(font .,default-font-name))
-
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (setq visible-bell t)
