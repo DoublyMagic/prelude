@@ -39,11 +39,6 @@
 (require 'prelude-xml)
 (require 'prelude-yaml)
 
-
-;; jira - too buggy currently
-;; (require 'jira)
-;; (setq jira-url "https://jira.zuerchertech.com/rpc/xmlrpc")
-
 (setq prelude-clean-whitespace-on-save nil
       prelude-auto-save nil)
 
@@ -188,11 +183,6 @@
 (global-set-key (kbd "C-S-h") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-'") 'mc-hide-unmatched-lines-mode)
 
-;; postgresql
-(setq sql-database "leds_jjerome"
-      sql-server "zt-dev-4"
-      sql-user "ledsadmin")
-
 ;; replace doc-view-mode for pdf files
 (pdf-tools-install)
 
@@ -247,7 +237,7 @@
             (setq sgml-basic-offset 2)))
 (add-hook 'python-mode-hook
           (lambda ()
-            (flycheck-set-checker-executable "python-pycompile" "/home/jjerome/.pyenv/versions/leds_env/bin/python")
+            (flycheck-set-checker-executable "python-pycompile" "~/.pyenv/versions/leds_env/bin/python")
             (pyenv-mode)
             (pyenv-mode-set "leds_env")
             (anaconda-eldoc-mode)
@@ -327,10 +317,6 @@
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
-
-;; Additional prelude configs
-(prelude-install-search-engine "fogbugz" "https://fogbugz.zuerchertech.com/default.asp?" "FogBugz: ")
-(define-key prelude-mode-map (kbd "C-c f") 'prelude-fogbugz)
 
 (setq-default
  frame-title-format
