@@ -23,4 +23,5 @@ session*
 .cask
 tramp
 /var/pcache
-anaconda-mode/
+.emacs.desktop
+.emacs.desktop.lock
