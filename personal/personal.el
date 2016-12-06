@@ -193,6 +193,7 @@
 (require 'rw-emms)
 (require 'rw-minibuffer)
 (require 'rw-beacon)
+(require 'zmonitor)
 
 ;; Hooks
 (add-hook 'prog-mode-common-hook
@@ -213,6 +214,8 @@
             (setq sgml-basic-offset 2)))
 (add-hook 'python-mode-hook
           (lambda ()
+            (pythonic-activate "/home/jjerome/.pyenv/versions/2.7")
+            (anaconda-eldoc-mode)
             (setq indent-tabs-mode t
                   tab-width 4
                   py-indent-offset 4
