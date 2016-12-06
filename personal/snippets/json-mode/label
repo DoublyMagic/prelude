@@ -4,9 +4,8 @@
 # --
 {
   "type": "text",
-  "font": "${1:font}",
-  "at": [${2:x}, ${3:y}],
-  "width": ${4:w},
-  "align": "${5:left}",
-  "value": "${6:value}"
+  "at": [${1:x}, ${2:y}],
+  "width": ${3:w},
+  "align": "${4:left}",
+  "value": "${5:value}"
 }

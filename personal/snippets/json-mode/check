@@ -1,0 +1,10 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: check
+# key: check
+# --
+{
+  "type": "checkbox",
+  "at": [${1:x}, ${2:y}],
+  "length": ${3:5},
+  "tag": "${4:field tag}"
+}

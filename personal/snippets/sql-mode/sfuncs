@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: sfuncs
+# key: sfuncs
+# --
+
+SELECT routine_name, routine_definition
+FROM information_schema.routines
+WHERE routine_type = 'FUNCTION'
+  AND routine_schema = 'public'
+  AND data_type NOT ILIKE 'trigger'
+  AND routine_name ILIKE '%$0%';

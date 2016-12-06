@@ -7,6 +7,9 @@
 (defvar is-osx-p (eq system-type 'darwin))
 (defvar is-linux-p (eq system-type 'gnu/linux))
 
+(defvar default-font-name "Consolas-10:bold")
+(add-to-list 'default-frame-alist `(font .,default-font-name))
+
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (setq visible-bell t)

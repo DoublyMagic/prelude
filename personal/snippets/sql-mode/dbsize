@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: dbsize
+# key: dbsize
+# --
+
+SELECT pg_size_pretty(pg_database_size('leds_$0'));

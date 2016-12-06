@@ -10,15 +10,15 @@
 (require 'org-capture)
 
 ;; Configure org-capture
-(setq org-directory "~/Dropbox/org"
-      org-default-notes-file "~/Dropbox/org/refile.org")
+(setq org-directory "~/Documents/org"
+      org-default-notes-file "~/Documents/org/refile.org")
 
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (setq org-capture-templates
-      (quote (("t" "todo" entry (file "~/Dropbox/org/gtd.org") "* TODO: %?\n%U\n")
-              ("c" "code note" entry (file "~/Dropbox/org/gtd.org") "* CODE: %?\n%U\n%a\n")
-              ("p" "paste" entry (file "~/Dropbox/org/gtd.org") "* PASTE: %?\n%U\n%x\n"))))
+      (quote (("t" "todo" entry (file "~/Documents/org/gtd.org") "* TODO: %?\n%U\n")
+              ("c" "code note" entry (file "~/Documents/org/gtd.org") "* CODE: %?\n%U\n%a\n")
+              ("p" "paste" entry (file "~/Documents/org/gtd.org") "* PASTE: %?\n%U\n%x\n"))))
 
 ;; Add support for adding links to man pages
 (org-add-link-type "man" 'org-man-open)

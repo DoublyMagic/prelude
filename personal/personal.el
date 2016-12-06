@@ -39,6 +39,11 @@
 (require 'prelude-xml)
 (require 'prelude-yaml)
 
+
+;; jira - too buggy currently
+;; (require 'jira)
+;; (setq jira-url "https://jira.zuerchertech.com/rpc/xmlrpc")
+
 (setq prelude-clean-whitespace-on-save nil
       prelude-auto-save nil)
 
@@ -113,10 +118,12 @@
 (global-set-key (kbd "C-c y") 'helm-c-yas-complete)
 
 ;; expand-region
+(setq expand-region-smart-cursor nil)
 (global-set-key (kbd "C-h") 'er/expand-region)
 
 ;; recentf
-(setq-default recentf-max-saved-items 50)
+(setq-default recentf-max-saved-items 50
+              recentf-exclude '(prelude-recentf-exclude-p file-remote-p))
 
 ;; clojure-mode
 (require 'clojure-mode)
@@ -138,7 +145,7 @@
 (require 'omnisharp)
 (eval-after-load 'company
   '(add-to-list 'company-backends 'company-omnisharp))
-(setq-default omnisharp-server-executable-path "~/src/OmniSharpServer/OmniSharp/bin/Debug/OmniSharp.exe")
+(setq-default omnisharp-server-executable-path "~/aur_builds/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
 
 ;; company
 (defun is-unneeded-company-backend? (backend)
@@ -178,13 +185,39 @@
 ;; multiple-cursors
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-S-h") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-'") 'mc-hide-unmatched-lines-mode)
+
+;; postgresql
+(setq sql-database "leds_jjerome"
+      sql-server "zt-dev-4"
+      sql-user "ledsadmin")
+
+;; replace doc-view-mode for pdf files
+(pdf-tools-install)
+
+;; run m4-commands from anywhere
+(require 'm4-mode)
+
+;; helm-flyspell-correct
+(global-set-key (kbd "C-M-i") 'helm-flyspell-correct)
+(global-set-key (kbd "C-;") 'completion-at-point)
+
+;; Window Resize
+(global-set-key (kbd "s-C-j") 'shrink-window-horizontally)
+(global-set-key (kbd "s-C-;") 'enlarge-window-horizontally)
+(global-set-key (kbd "s-C-l") 'shrink-window)
+(global-set-key (kbd "s-C-k") 'enlarge-window)
+
+;; smartparens
+(require 'smartparens)
+(require 'smartparens-config)
 
 ;; Personal Modules
 (add-to-list 'load-path (personal-dir-path "modules"))
 (require 'rw-ediff)
 (require 'rw-vc)
 (require 'jj-key-chord)
-(require 'rw-smartparens)
 (require 'rw-projectile)
 (require 'rw-web-mode)
 (require 'rw-helm)
@@ -193,6 +226,7 @@
 (require 'rw-emms)
 (require 'rw-minibuffer)
 (require 'rw-beacon)
+(require 'zmonitor)
 
 ;; Hooks
 (add-hook 'prog-mode-common-hook
@@ -213,6 +247,11 @@
             (setq sgml-basic-offset 2)))
 (add-hook 'python-mode-hook
           (lambda ()
+            (flycheck-set-checker-executable "python-pycompile" "/home/jjerome/.pyenv/versions/leds_env/bin/python")
+            (pyenv-mode)
+            (pyenv-mode-set "leds_env")
+            (anaconda-eldoc-mode)
+            (modify-syntax-entry ?_ "_" python-mode-syntax-table)
             (setq indent-tabs-mode t
                   tab-width 4
                   py-indent-offset 4
@@ -268,6 +307,9 @@
 (add-hook 'sql-interactive-mode-hook
           (lambda ()
             (toggle-truncate-lines t)))
+(add-hook 'nxml-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)))
 
 ;; File associations
 (add-to-list 'auto-mode-alist '("\\.pr[oi]\\'" . shell-script-mode))
@@ -283,6 +325,8 @@
 (add-to-list 'auto-mode-alist '("\\.mm\\'" . objc-mode))
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
+(add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
 
 ;; Additional prelude configs
 (prelude-install-search-engine "fogbugz" "https://fogbugz.zuerchertech.com/default.asp?" "FogBugz: ")

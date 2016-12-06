@@ -4,9 +4,10 @@
 # --
 {
   "type": "text",
-  "font": "${1:font}",
+  "font": "${1:value}",
   "at": [${2:x}, ${3:y}],
   "width": ${4:w},
-  "align": "${5:left}",
-  "tag": "${6:field tag}"
+  "height": ${5:1},
+  "align": "${6:left}",
+  "tag": "${7:field tag}"
 }

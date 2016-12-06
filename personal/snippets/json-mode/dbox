@@ -1,0 +1,37 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: dbox
+# key: dbox
+# --
+{
+  "type": "line",
+  "from": [${1:x}, ${2:y}],
+  "length": 14.4,
+  "orientation": "vertical",
+  "size": 1
+}, {
+  "type": "line",
+  "from": [$1, $2],
+  "length": 18.8,
+  "orientation": "horizontal",
+  "size": 1
+}, {
+  "type": "line",
+  "from": [${1:$(+ (string-to-number yas-text) 18.8)}, $2],
+  "length": 14.4,
+  "orientation": "vertical",
+  "size": 1
+}, {
+  "type": "line",
+  "from": [$1, ${2:$(+ (string-to-number yas-text) 14.4)}],
+  "length": 18.8,
+  "orientation": "horizontal",
+  "size": 1
+}, {
+  "type": "text",
+  "font": "value",
+  "at": [${1:$(+ (string-to-number yas-text) 0.5)}, ${2:$(+ (string-to-number yas-text) 3)}],
+  "width": 17.8,
+  "height": 1,
+  "align": "center",
+  "tag": "${3:field tag}"
+}
